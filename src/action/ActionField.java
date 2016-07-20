@@ -36,18 +36,6 @@ public class ActionField {
     private List secondAggressorActionsFromRecord;
     private List tanksActions;
 
-    private String firstAggressorLocation;
-    private int firstAggressorLocationX;
-    private int firstAggressorLocationY;
-
-    private String secondAggressorLocation;
-    private int secondAggressorLocationX;
-    private int secondAggressorLocationY;
-
-    private String defenderLocation;
-    private int defenderLocationX;
-    private int defenderLocationY;
-
     private boolean firstAggressorPlayer;
     private boolean secondAggressorPlayer;
 
@@ -636,20 +624,6 @@ public class ActionField {
         return jTankChoose;
     }
 
-    private void tanksCoordinates() {
-        firstAggressorLocation = battleField.getFirstAggressorLocation();
-        firstAggressorLocationX = Integer.parseInt(firstAggressorLocation.split("_")[1]);
-        firstAggressorLocationY = Integer.parseInt(firstAggressorLocation.split("_")[0]);
-
-        secondAggressorLocation = battleField.getSecondAggressorLocation();
-        secondAggressorLocationX = Integer.parseInt(secondAggressorLocation.split("_")[1]);
-        secondAggressorLocationY = Integer.parseInt(secondAggressorLocation.split("_")[0]);
-
-        defenderLocation = battleField.getDefenderLocation();
-        defenderLocationX = Integer.parseInt(defenderLocation.split("_")[1]);
-        defenderLocationY = Integer.parseInt(defenderLocation.split("_")[0]);
-    }
-
     private void selectObjects() {
         tanksList = new ArrayList<>();
         bullets = new ArrayList<>();
@@ -657,24 +631,22 @@ public class ActionField {
         eagle = battleField.getEagleLocation();
         secondAggressorPlayer = false;
 
-        tanksCoordinates();
-
-        defender = new T34(battleField, defenderLocationX, defenderLocationY, Direction.UP, image, "d1");
+        defender = new T34(battleField, battleField.getDefaultDefenderLocationX(), battleField.getDefaultDefenderLocationY(), Direction.UP, image, "d1");
 
         if(firstAggressorIdx == 0) {
             firstAggressor = new BT7(battleField,
-                    firstAggressorLocationX, firstAggressorLocationY, Direction.DOWN, image, eagle, firstAggressorPlayer, "a1");
+                    battleField.getDefaultFirstAggressorLocationX(), battleField.getDefaultFirstAggressorLocationY(), Direction.DOWN, image, eagle, firstAggressorPlayer, "a1");
         } else if(firstAggressorIdx == 1) {
             firstAggressor = new Tiger(battleField,
-                    firstAggressorLocationX, firstAggressorLocationY, Direction.DOWN, image, defender, firstAggressorPlayer, "a1");
+                    battleField.getDefaultFirstAggressorLocationX(), battleField.getDefaultFirstAggressorLocationY(), Direction.DOWN, image, defender, firstAggressorPlayer, "a1");
         }
 
         if(secondAggressorIdx == 0) {
             secondAggressor = new BT7(battleField,
-                    secondAggressorLocationX, secondAggressorLocationY, Direction.DOWN, image, eagle, secondAggressorPlayer, "a2");
+                    battleField.getDefaultSecondAggressorLocationX(), battleField.getDefaultSecondAggressorLocationY(), Direction.DOWN, image, eagle, secondAggressorPlayer, "a2");
         } else if(secondAggressorIdx == 1) {
             secondAggressor = new Tiger(battleField,
-                    secondAggressorLocationX, secondAggressorLocationY, Direction.DOWN, image, defender, secondAggressorPlayer, "a2");
+                    battleField.getDefaultSecondAggressorLocationX(), battleField.getDefaultSecondAggressorLocationY(), Direction.DOWN, image, defender, secondAggressorPlayer, "a2");
         }
 
         tanksList.add(defender);

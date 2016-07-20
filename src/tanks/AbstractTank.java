@@ -296,11 +296,6 @@ public abstract class AbstractTank implements Tank {
     }
 
     @Override
-    public void holdRecharge(long timeout) {
-        recharge = recharge + timeout;
-    }
-
-    @Override
     public void destroy() {
         destroyed = true;
     }

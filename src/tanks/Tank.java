@@ -20,8 +20,6 @@ public interface Tank extends Drawable, Destroyable {
     void setY(int y);
 
     boolean isRecharge();
-
-    void holdRecharge(long recharge);
 	
 	Direction getDirection();
 

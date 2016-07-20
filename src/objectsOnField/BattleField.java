@@ -8,8 +8,6 @@ import java.util.List;
 
 public class BattleField implements Drawable {
 
-    final boolean COLORED_MODE = false;
-
     private final int BF_WIDTH = 576 + 16;
     private final int BF_HEIGHT = 576 + 39;
 
@@ -89,17 +87,17 @@ public class BattleField implements Drawable {
         return objectOnFields[eagleV][eagleH];
     }
 
-    public String getFirstAggressorLocation() {
-        return "0_0";
-    }
+    public int getDefaultFirstAggressorLocationX() { return 0;}
 
-    public String getSecondAggressorLocation() {
-        return "0_512";
-    }
+    public int getDefaultFirstAggressorLocationY() { return 0;}
 
-    public String getDefenderLocation() {
-        return "512_128";
-    }
+    public int getDefaultSecondAggressorLocationX() { return 512;}
+
+    public int getDefaultSecondAggressorLocationY() { return 0;}
+
+    public int getDefaultDefenderLocationX() { return 128;}
+
+    public int getDefaultDefenderLocationY() { return 512;}
 
     public int getBF_WIDTH() {
         return BF_WIDTH;
